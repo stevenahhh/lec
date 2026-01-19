@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <!-- 260119 수정 -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
     <style>
         :root {
             --r-main-font: 'Pretendard', sans-serif;
-            --r-heading-font: 'Pretendard'sans-serif;
+            --r-heading-font: 'Pretendard' sans-serif;
             --r-code-font: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
             --r-main-color: #333333;
             --r-heading-color: #0066cc;
@@ -631,31 +632,28 @@ for i in range(1, 11):
                     <tbody>
                         <tr>
                             <td><code>conda</code> 명령어를 찾을 수 없음</td>
-                            <td>컴퓨터 재시작 후 다시 시도</td>
+                            <td>환경 변수 등록 확인 또는 Anaconda Prompt 사용</td>
                         </tr>
                         <tr>
                             <td>Copilot 제안이 안 나옴</td>
-                            <td>GitHub 로그인 확인, 구독 상태 확인</td>
+                            <td>GitHub 로그인 확인, 우측 하단 아이콘 활성 상태 확인</td>
                         </tr>
                         <tr>
-                            <td><code>(myenv)</code>가 안 보임</td>
-                            <td><code>conda activate myenv</code> 다시 실행</td>
+                            <td><code>pyaudio</code> 설치 실패</td>
+                            <td>Windows의 경우 <code>pip install pipwin</code> 후 <code>pipwin install pyaudio</code> 시도
+                            </td>
                         </tr>
                         <tr>
-                            <td>인터프리터 목록에 myenv 없음</td>
-                            <td>VSCode 재시작 후 다시 검색</td>
+                            <td>마이크 인식이 안 됨</td>
+                            <td>Windows 개인정보 설정에서 앱의 마이크 접근 권한 확인</td>
                         </tr>
                         <tr>
-                            <td>웹캠이 안 열림</td>
-                            <td>다른 프로그램에서 웹캠 사용 중인지 확인</td>
-                        </tr>
-                        <tr>
-                            <td>얼굴 인식이 안 됨</td>
-                            <td>조명 밝게, 정면 응시</td>
+                            <td>음성 인식 결과가 부정확함</td>
+                            <td>인터넷 연결 확인 (Google API 사용), 배경 소음 제거</td>
                         </tr>
                         <tr>
                             <td>EXE 실행 시 바이러스 경고</td>
-                            <td>정상 (Windows Defender 오탐지), 계속 실행</td>
+                            <td>정상 (Windows Defender 오탐지), [추가 정보] 클릭 후 실행</td>
                         </tr>
                     </tbody>
                 </table>

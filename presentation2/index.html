@@ -3,20 +3,270 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>두 번째 발표 자료</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2차 발표: AI와 함께하는 데이터 시각화</title>
+  <base target="_blank">
+
+  <!-- Pretendard Font -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <!-- reveal.js CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/white.css">
+
+  <!-- Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css">
+
   <style>
-    body {
-      font-family: sans-serif;
+    :root {
+      --r-main-font: 'Pretendard', sans-serif;
+      --r-heading-font: 'Pretendard', sans-serif;
+      --r-code-font: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+      --r-main-color: #333333;
+      --r-heading-color: #e67e22;
+      /* 주제 색상 변경 (주황색 계열) */
+      --r-background-color: #ffffff;
+      --r-link-color: #e67e22;
+    }
+
+    .reveal {
+      font-family: var(--r-main-font);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--r-main-color);
+    }
+
+    /* Layout */
+    .reveal .slides section {
       display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+      padding: 40px 50px;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    .reveal .slides section.center {
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      text-align: center;
+    }
+
+    .reveal h1 {
+      font-family: var(--r-heading-font);
+      font-weight: 700;
+      color: var(--r-heading-color);
+      font-size: 1.8em;
+      margin: 0 0 0.8em 0;
+      width: 100%;
+      padding-bottom: 0.4em;
+      border-bottom: 2px solid rgba(230, 126, 34, 0.1);
+      line-height: 1.2;
+    }
+
+    .reveal .slides section.center h1 {
+      border-bottom: none;
+      padding-bottom: 0;
+      font-size: 2.8em;
+      margin-bottom: 0.2em;
+    }
+
+    .reveal h2 {
+      font-size: 1.2em;
+      color: #4a5568;
+      margin-bottom: 0.8em;
+    }
+
+    .reveal blockquote {
+      width: 100%;
+      padding: 20px;
+      background: #fff8f1;
+      border-left: 5px solid #e67e22;
+      font-style: normal;
+      box-shadow: none;
+      text-align: left;
+    }
+
+    code {
+      font-family: var(--r-code-font);
+      background-color: #f7fafc;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #d53f8c;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9em;
+    }
+
+    th {
+      background-color: #e67e22;
+      color: white;
+      padding: 10px;
+    }
+
+    td {
+      border-bottom: 1px solid #edf2f7;
+      padding: 10px;
     }
   </style>
 </head>
 
 <body>
-  <h1>두 번째 발표 자료 - 준비 중입니다.</h1>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title Slide -->
+      <section class="center">
+        <h1>2차 발표: 데이터 시각화</h1>
+        <h2>Python 라이브러리를 활용한 데이터 분석 및 시운전</h2>
+      </section>
+
+      <!-- Slide 2: Why Data Viz? -->
+      <section>
+        <h1>데이터 시각화의 목적</h1>
+        <ul>
+          <li>대량의 데이터 세트 내 <strong>패턴 및 추세 식별</strong></li>
+          <li>분석 결과의 <strong>객체성 확보 및 전달력 강화</strong></li>
+          <li>데이터 이상치(Outlier) 및 분포의 직관적 파악</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3: Libraries -->
+      <section>
+        <h1>주요 라이브러리 사양</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>라이브러리</th>
+              <th>주요 기능</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Pandas</code></td>
+              <td>구조화된 데이터 조작 및 통계 분석</td>
+            </tr>
+            <tr>
+              <td><code>Matplotlib</code></td>
+              <td>2D 정적 그래프 생성 및 맞춤형 레이아웃 설정</td>
+            </tr>
+            <tr>
+              <td><code>Seaborn</code></td>
+              <td>고수준 인터페이스 기반 통계 그래픽 라이브러리</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Slide 4: Step 1 Setup -->
+      <section>
+        <h1>Step 1: 환경 구성</h1>
+        <p>터미널에 아래 명령어를 입력하여 필요한 패키지를 설치하십시오.</p>
+        <pre><code class="language-bash">pip install pandas matplotlib seaborn openpyxl</code></pre>
+      </section>
+
+      <!-- Slide 5: Step 2 Sample Data -->
+      <section>
+        <h1>Step 2: 데이터 매체 준비</h1>
+        <p><code>data.csv</code> 파일을 생성하고 아래 데이터를 입력하십시오.</p>
+        <pre><code>날짜,상품,판매량,매출액
+2026-01-01,노트북,5,5000000
+2026-01-02,마우스,20,400000
+2026-01-03,키보드,15,1200000</code></pre>
+      </section>
+
+      <!-- Slide 6: Step 3 Basic Analysis -->
+      <section>
+        <h1>Step 3: 데이터 로드 및 분석</h1>
+        <pre><code class="language-python">import pandas as pd
+
+# 데이터프레임 생성
+df = pd.read_csv('data.csv')
+
+# 기초 통계 정보 출력
+print(df.info())
+print(df.describe())</code></pre>
+      </section>
+
+      <!-- Slide 7: Step 4 Plotting -->
+      <section>
+        <h1>Step 4: 실시간 수치 시각화</h1>
+        <pre><code class="language-python">import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 시스템 폰트 설정 (Windows)
+plt.rcParams['font.family'] = 'Malgun Gothic'
+
+# 상품별 판매량 분석 차트 생성
+plt.figure(figsize=(10, 6))
+sns.barplot(x='상품', y='판매량', data=df)
+plt.title('Product Sales Performance')
+plt.show()</code></pre>
+      </section>
+
+      <!-- Slide 8: Step 5 Interactive -->
+      <section>
+        <h1>Step 5: AI 코드 생성 실습</h1>
+        <p>Copilot Chat에 다음 질의어를 입력하여 코드를 생성하십시오.</p>
+        <blockquote>
+          "df 객체를 사용하여 일별 매출 합계를 산출하고, 시계열 선 그래프를 출력하는 코드를 작성하십시오."
+        </blockquote>
+      </section>
+
+      <!-- Slide 9: Troubleshooting -->
+      <section>
+        <h1>결함 해결 (Troubleshooting)</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>오류 현상</th>
+              <th>해결 방안</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>글꼴 렌더링 오류</td>
+              <td>정확한 폰트 경로 지정 또는 시스템 폰트 설치 여부 확인</td>
+            </tr>
+            <tr>
+              <td>FileNotFoundError</td>
+              <td>파일 경로의 절대/상대 경로 일치 여부 확인</td>
+            </tr>
+            <tr>
+              <td>ModuleNotFoundError</td>
+              <td><code>pip install</code> 수행 여부 및 가상환경 인터프리터 일치 확인</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Slide 10: Ending -->
+      <section class="center">
+        <h1>발표 종료</h1>
+        <p>다음 주제: <strong>웹 데이터 수집 자동화</strong></p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      plugins: [RevealHighlight],
+      transition: 'convex',
+      center: true
+    });
+  </script>
 </body>
 
 </html>
