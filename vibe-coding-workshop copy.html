@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSCode + Miniconda + GitHub Copilot 실습</title>
+    <base target="_blank">
+
+    <!-- Pretendard Font -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+    <!-- reveal.js CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/white.css">
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css">
+
+    <style>
+        :root {
+            --r-main-font: 'Pretendard', sans-serif;
+            --r-heading-font: 'Pretendard'sans-serif;
+            --r-code-font: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            --r-main-color: #333333;
+            --r-heading-color: #0066cc;
+            --r-background-color: #ffffff;
+            --r-link-color: #0066cc;
+        }
+
+        .reveal {
+            font-family: var(--r-main-font);
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--r-main-color);
+        }
+
+        /* Layout */
+        .reveal .slides section {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+            padding: 40px 50px;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        .reveal .slides section.center {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Typography */
+        .reveal h1 {
+            font-family: var(--r-heading-font);
+            font-weight: 700;
+            color: var(--r-heading-color);
+            font-size: 1.8em;
+            margin: 0 0 0.8em 0;
+            width: 100%;
+            padding-bottom: 0.4em;
+            border-bottom: 2px solid rgba(0, 102, 204, 0.1);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .reveal .slides section.center h1 {
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 2.8em;
+            margin-bottom: 0.2em;
+            width: auto;
+        }
+
+        .reveal h2 {
+            font-family: var(--r-heading-font);
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin: 0 0 0.8em 0;
+            width: 100%;
+            line-height: 1.3;
+        }
+
+        .reveal .slides section.center h2 {
+            color: #718096;
+            font-size: 1.3em;
+            width: auto;
+            margin-top: 0.2em;
+            font-weight: 500;
+        }
+
+        .reveal p,
+        .reveal li {
+            font-size: 1.0em;
+            line-height: 1.7;
+            margin: 0.5em 0;
+            color: #2d3748;
+        }
+
+        .reveal ol,
+        .reveal ul {
+            margin: 0.5em 0 1em 1.5em;
+            display: block;
+        }
+
+        .reveal li {
+            margin-bottom: 0.4em;
+        }
+
+        /* Links */
+        .reveal a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .reveal a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Code */
+        .reveal code {
+            font-family: var(--r-code-font);
+            background: rgba(0, 102, 204, 0.08);
+            color: #0052a3;
+            padding: 0.1em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            vertical-align: baseline;
+        }
+
+        .reveal pre {
+            background: #282c34;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            font-size: 0.8em;
+            margin: 1.5em 0;
+            width: 100%;
+        }
+
+        .reveal pre code {
+            background: transparent;
+            padding: 1.2em;
+            color: #abb2bf;
+            line-height: 1.5;
+            max-height: 500px;
+            border-radius: 8px;
+        }
+
+        /* Tables */
+        .reveal table {
+            font-size: 0.85em;
+            margin: 1.5em 0;
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .reveal th {
+            background: #f7fafc;
+            color: #2d3748;
+            font-weight: 700;
+            text-transform: none;
+            border-bottom: 2px solid #e2e8f0;
+            padding: 12px 16px;
+        }
+
+        .reveal td {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 12px 16px;
+            color: #4a5568;
+        }
+
+        .reveal tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Blockquotes */
+        .reveal blockquote {
+            background: #f8fbff;
+            border-left: 5px solid #0066cc;
+            padding: 1.2em 1.5em;
+            font-style: normal;
+            margin: 1.5em 0;
+            font-size: 0.9em;
+            width: 95%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .reveal blockquote p {
+            margin: 0;
+            color: #2b6cb0;
+            font-weight: 500;
+        }
+
+        /* Utilities */
+        .highlight-box {
+            background: #fffaf0;
+            padding: 0.2em 0.6em;
+            border-radius: 6px;
+            border: 1px solid #fbd38d;
+            color: #9c4221;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .success {
+            color: #2f855a;
+            font-weight: 700;
+        }
+
+        .warning {
+            color: #c53030;
+            font-weight: 700;
+        }
+
+        /* Slide Numbers */
+        .reveal .slide-number {
+            font-family: var(--r-main-font);
+            font-size: 14px;
+            color: #cbd5e0;
+            background: transparent;
+        }
+
+        /* Specific Spacing Adjustments */
+        .reveal .content {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Title -->
+            <section class="center">
+                <h1>실습</h1>
+                <p>stevenahhh.github.io/p1-260119</p>
+            </section>
+
+            <!-- Slide 2: Tools Overview -->
+            <section>
+                <h1>실습 도구 소개</h1>
+                <h2>세 가지 핵심 도구</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>도구</th>
+                            <th>역할</th>
+                            <th>비유</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Python</strong></td>
+                            <td>프로그래밍 언어</td>
+                            <td>건축에서 사용하는 언어 (영어, 한국어)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VSCode</strong></td>
+                            <td>코드 작성 도구</td>
+                            <td>워드프로세서 (한글, MS Word)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Miniconda</strong></td>
+                            <td>환경 관리 도구</td>
+                            <td>프로젝트별 작업실 관리자</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 3: Python Interpreter -->
+            <section>
+                <h1>Python의 특징</h1>
+                <h2>인터프리터 언어 vs 컴파일러 언어</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>인터프리터 언어</th>
+                            <th>컴파일러 언어</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>대표 언어</strong></td>
+                            <td>Python, JavaScript</td>
+                            <td>C, C++, Java</td>
+                        </tr>
+                        <tr>
+                            <td><strong>실행 방식</strong></td>
+                            <td>코드를 한 줄씩 즉시 실행</td>
+                            <td>전체 코드를 번역 후 실행</td>
+                        </tr>
+                        <tr>
+                            <td><strong>개발 속도</strong></td>
+                            <td class="success">빠름 (즉시 실행/테스트)</td>
+                            <td class="warning">느림 (컴파일 시간 필요)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>실행 속도</strong></td>
+                            <td class="warning">상대적으로 느림</td>
+                            <td class="success">빠름</td>
+                        </tr>
+                        <tr>
+                            <td><strong>배우기</strong></td>
+                            <td class="success">쉬움</td>
+                            <td class="warning">어려움</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <blockquote>
+                    Python은 <strong>인터프리터 언어</strong><br>
+                    - 코드 작성 후 바로 실행/결과 확인 가능<br>
+                    - 초보자가 배우기 쉬움
+                </blockquote>
+            </section>
+
+            <!-- Slide 4: Why Virtual Environment -->
+            <section>
+                <h1>가상환경의 필요성</h1>
+                <h2>프로젝트별 독립 환경 구성</h2>
+                <blockquote>
+                    <strong>가상환경이란?</strong><br>
+                    - 프로젝트마다 독립된 Python 실행 환경 구성<br>
+                    - 각 프로젝트가 서로 다른 Python 버전과 패키지 사용 가능<br>
+                    - 격리된 작업 공간 제공
+                </blockquote>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>상황</th>
+                            <th>가상환경 미사용</th>
+                            <th>가상환경 사용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>프로젝트 A</td>
+                            <td>Python 3.8 필요</td>
+                            <td class="success">A 전용 환경</td>
+                        </tr>
+                        <tr>
+                            <td>프로젝트 B</td>
+                            <td>Python 3.11 필요</td>
+                            <td class="success">B 전용 환경</td>
+                        </tr>
+                        <tr>
+                            <td>결과</td>
+                            <td class="warning">버전 충돌 발생</td>
+                            <td class="success">독립적 운영</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 5: Miniconda Download -->
+            <section>
+                <h1>Step 1: Miniconda 설치</h1>
+                <h2>1-1. Miniconda란?</h2>
+                <blockquote>
+                    <strong>Miniconda</strong><br>
+                    - Python 가상환경을 만들고 관리하는 도구<br>
+                    - 여러 프로젝트를 각각 독립된 환경에서 작업
+                </blockquote>
+                <h2>1-2. 다운로드</h2>
+                <ol>
+                    <li>다운로드 페이지</li>
+                    <a
+                        href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe</a>
+                    </li>
+                </ol>
+                <p><em><!-- [스크린샷: Miniconda 다운로드 페이지] --></em></p>
+            </section>
+
+            <!-- Slide 5: Miniconda Install -->
+            <section>
+                <h1>Step 1: Miniconda 설치</h1>
+                <h2>1-3. 설치 진행</h2>
+                <ol>
+                    <li>다운로드한 파일 실행</li>
+                    <li><strong>Next</strong> 클릭</li>
+                    <li><strong>I Agree</strong> 클릭</li>
+                    <li><strong>Just Me</strong> 선택 → <strong>Next</strong></li>
+                    <li>설치 경로 그대로 → <strong>Next</strong></li>
+                    <li>⚠️ <strong>중요!</strong> 아래 옵션 체크:
+                        <br><span class="highlight-box">✅ Add Miniconda3 to my PATH environment variable</span>
+                    </li>
+                    <li><strong>Install</strong> 클릭</li>
+                </ol>
+            </section>
+
+            <!-- Slide 6: Miniconda Verify -->
+            <section>
+                <h1>Step 1: Miniconda 설치</h1>
+                <h2>1-4. 설치 확인</h2>
+                <ol>
+                    <li><strong>Windows 키</strong> 누르고 <code>cmd</code> 입력 → Enter</li>
+                    <li>아래 명령어 입력:</li>
+                </ol>
+                <pre><code class="language-bash">conda --version</code></pre>
+                <p>아래와 같이 출력되면 정상 설치 완료</p>
+                <pre><code>conda 24.x.x</code></pre>
+                <blockquote><code>conda은(는) 인식할 수 없는 명령입니다</code> 오류 발생 시 컴퓨터 재시작 후 재시도</blockquote>
+            </section>
+
+            <!-- Slide 7: VSCode Download -->
+            <section>
+                <h1>Step 2: VSCode 설치</h1>
+                <h2>2-1. VSCode란?</h2>
+                <blockquote>
+                    <strong>Visual Studio Code (VSCode)</strong><br>
+                    - 마이크로소프트에서 만든 코드 편집기<br>
+                    - 문서 작성에 MS Word 사용하듯, 코드 작성에는 VSCode 사용<br>
+                    - 다양한 확장 기능으로 개발 환경 구성
+                </blockquote>
+                <h2>2-2. 다운로드 & 설치</h2>
+                <ol>
+                    <li>브라우저에서 검색: <code>vscode download</code></li>
+                    <li>또는 직접 접속: <a href="https://code.visualstudio.com">https://code.visualstudio.com</a></li>
+                    <li><strong>Download for Windows</strong> 클릭</li>
+                    <li>설치 파일 실행 → 전부 <strong>다음</strong> 클릭</li>
+
+                </ol>
+            </section>
+
+            <!-- Slide 8: VSCode Extensions -->
+            <section>
+                <h1>Step 2: VSCode 설치</h1>
+                <h2>2-3. 필수 확장 프로그램 설치</h2>
+                <p>VSCode 실행 후:</p>
+                <ol>
+                    <li>왼쪽 사이드바 <strong>확장</strong> 아이콘 클릭 (또는 <code>Ctrl + Shift + X</code>)</li>
+                    <li>검색창에 입력 후 <strong>Install</strong> 클릭:</li>
+                </ol>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>확장 프로그램</th>
+                            <th>용도</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Python</code></td>
+                            <td>Python 개발 지원</td>
+                        </tr>
+                        <tr>
+                            <td><code>GitHub Copilot</code></td>
+                            <td>AI 코딩 도우미</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 9: GitHub Login -->
+            <section>
+                <h1>Step 2: VSCode 설치</h1>
+                <h2>2-4. GitHub 로그인 (Copilot 활성화)</h2>
+                <ol>
+                    <li>VSCode 왼쪽 하단 <strong>사람 아이콘</strong> 클릭</li>
+                    <li><strong>Sign in with GitHub</strong> 클릭</li>
+                    <li>브라우저에서 GitHub 로그인</li>
+                    <li><strong>Authorize</strong> 클릭</li>
+                </ol>
+                <blockquote>
+                    GitHub Copilot 유료 서비스<br>
+                    - 월 $10 (학생 및 오픈소스 기여자 무료)<br>
+                    - 무료 체험 가능
+                </blockquote>
+            </section>
+
+            <!-- Slide 10: Create Project Folder -->
+            <section>
+                <h1>Step 3: 가상환경 만들기</h1>
+                <h2>3-1. 프로젝트 폴더 만들기</h2>
+                <ol>
+                    <li>바탕화면에 <code>my_project</code> 폴더 생성</li>
+                    <li>VSCode에서 <strong>File → Open Folder</strong> → 해당 폴더 선택</li>
+                </ol>
+            </section>
+
+            <!-- Slide 11: Create Virtual Environment -->
+            <section>
+                <h1>Step 3: 가상환경 만들기</h1>
+                <h2>3-2. 터미널 열기 & 가상환경 생성</h2>
+                <ol>
+                    <li>VSCode 상단 메뉴: <strong>Terminal → New Terminal</strong></li>
+                    <li>아래 명령어 입력:</li>
+                </ol>
+                <pre><code class="language-bash">conda create -n myenv python=3.11</code></pre>
+                <ol start="3">
+                    <li><code>Proceed ([y]/n)?</code> 나오면 → <code>y</code> 입력 → Enter</li>
+                </ol>
+                <blockquote><code>myenv</code>: 가상환경 이름 (원하는 이름으로 변경 가능)</blockquote>
+            </section>
+
+            <!-- Slide 12: Activate Environment -->
+            <section>
+                <h1>Step 3: 가상환경 만들기</h1>
+                <h2>3-3. 가상환경 활성화</h2>
+                <pre><code class="language-bash">conda activate myenv</code></pre>
+                <p>터미널 앞에 <code>(myenv)</code> 표시 확인</p>
+                <pre><code>(myenv) C:\Users\사용자명\Desktop\my_project></code></pre>
+            </section>
+
+            <!-- Slide 13: Select Interpreter -->
+            <section>
+                <h1>Step 3: 가상환경 만들기</h1>
+                <h2>3-4. VSCode에서 인터프리터 선택</h2>
+                <ol>
+                    <li><code>Ctrl + Shift + P</code> 누르기</li>
+                    <li><code>Python: Select Interpreter</code> 입력 → Enter</li>
+                    <li>목록에서 <code>myenv</code> 포함된 항목 선택</li>
+                </ol>
+                <blockquote>VSCode에서 해당 가상환경의 Python 인터프리터 사용 설정 완료</blockquote>
+            </section>
+
+            <!-- Slide 14: Create File -->
+            <section>
+                <h1>Step 4: 바이브코딩 실습</h1>
+                <h2>4-1. 파일 생성</h2>
+                <ol>
+                    <li>VSCode 왼쪽 탐색기에서 <strong>새 파일</strong> 아이콘 클릭</li>
+                    <li>파일 이름: <code>main.py</code></li>
+                </ol>
+            </section>
+
+            <!-- Slide 15: Copilot Autocomplete -->
+            <section>
+                <h1>Step 4: 바이브코딩 실습</h1>
+                <h2>4-2. Copilot 자동완성 사용</h2>
+                <p><code>main.py</code> 파일에 주석 작성:</p>
+                <pre><code class="language-python"># 1부터 10까지 숫자를 출력하는 코드</code></pre>
+                <p>Enter 입력 후 대기하면 Copilot이 코드 제안</p>
+                <pre><code class="language-python"># 1부터 10까지 숫자를 출력하는 코드
+for i in range(1, 11):
+    print(i)</code></pre>
+                <blockquote><strong>Tab</strong> 키: 제안 수락 / <strong>Esc</strong> 키: 제안 거절</blockquote>
+            </section>
+
+            <!-- Slide 16: Copilot Chat -->
+            <section>
+                <h1>Step 4: 바이브코딩 실습</h1>
+                <h2>4-3. Copilot Chat 사용</h2>
+                <p>복잡한 요청은 채팅 기능 활용</p>
+                <ol>
+                    <li><code>Ctrl + Shift + I</code> (Copilot Chat 열기)</li>
+                    <li>대화창에 요청 입력:</li>
+                </ol>
+                <pre><code>사용자 이름을 입력받아서 환영 메시지를 출력하는 코드 작성</code></pre>
+                <ol start="3">
+                    <li>Copilot 코드 제안 확인 후 <strong>Insert at Cursor</strong> 클릭</li>
+                </ol>
+            </section>
+
+            <!-- Slide 17: Run Code -->
+            <section>
+                <h1>Step 4: 바이브코딩 실습</h1>
+                <h2>4-4. 코드 실행</h2>
+                <p>방법 1. 터미널에서 실행:</p>
+                <pre><code class="language-bash">python main.py</code></pre>
+                <p>방법 2. VSCode 우측 상단 <strong>실행 버튼</strong> 클릭</p>
+                <pre><code>실행 결과:
+1
+2
+3
+...
+10</code></pre>
+            </section>
+
+            <!-- Slide 18: Advanced Demo -->
+            <section>
+                <h1>Step 5: 실전 프로젝트 - AI 회의 녹음기</h1>
+                <h2>Copilot 원샷 프롬프트 (자동 실행)</h2>
+                <p><strong>Copilot Chat에 아래 프롬프트 전체 복사 후 붙여넣기:</strong></p>
+                <pre><code>Python으로 음성 인식 기능이 있는 회의 녹음기 프로그램을 만들고 Windows exe 파일로 패키징해줘. 직접 실행까지 해줘.
+
+프로그램 요구사항:
+- tkinter로 미니멀한 디자인의 GUI 제작 (Modern flat design)
+- 녹음 시작/중지 버튼, 타이머 표시
+- 녹음 중 실시간 파형 시각화 (matplotlib 또는 canvas)
+- "화자 전환" 버튼으로 수동 세그먼트 구분
+- 녹음 파일 WAV 형식 저장 (파일명에 타임스탬프)
+- speech_recognition + Google Web Speech API로 음성을 텍스트로 변환
+- 변환된 텍스트를 화자별로 구분하여 TXT 파일로 저장
+- 침묵 구간 감지하여 자동 세그먼트 분리 옵션
+- 저장된 녹음 파일 목록 보기 및 재생 기능
+
+기술 스택:
+- pyaudio: 오디오 녹음
+- speech_recognition: STT (Google API 사용, API 키 불필요)
+- tkinter: GUI
+- wave: 오디오 파일 저장
+
+실행 단계:
+1. meeting_recorder.py 파일 작성
+2. pip install pyaudio speechrecognition 실행
+3. 녹음 테스트 및 STT 변환 확인
+4. pip install pyinstaller 실행
+5. pyinstaller --onefile --noconsole meeting_recorder.py 실행
+6. dist/meeting_recorder.exe 생성 확인
+
+각 단계를 직접 실행하고 결과를 알려줘.</code></pre>
+            </section>
+
+            <!-- Slide 19: Troubleshooting -->
+            <section>
+                <h1>트러블슈팅</h1>
+                <h2>자주 발생하는 문제</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>증상</th>
+                            <th>해결 방법</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>conda</code> 명령어를 찾을 수 없음</td>
+                            <td>컴퓨터 재시작 후 다시 시도</td>
+                        </tr>
+                        <tr>
+                            <td>Copilot 제안이 안 나옴</td>
+                            <td>GitHub 로그인 확인, 구독 상태 확인</td>
+                        </tr>
+                        <tr>
+                            <td><code>(myenv)</code>가 안 보임</td>
+                            <td><code>conda activate myenv</code> 다시 실행</td>
+                        </tr>
+                        <tr>
+                            <td>인터프리터 목록에 myenv 없음</td>
+                            <td>VSCode 재시작 후 다시 검색</td>
+                        </tr>
+                        <tr>
+                            <td>웹캠이 안 열림</td>
+                            <td>다른 프로그램에서 웹캠 사용 중인지 확인</td>
+                        </tr>
+                        <tr>
+                            <td>얼굴 인식이 안 됨</td>
+                            <td>조명 밝게, 정면 응시</td>
+                        </tr>
+                        <tr>
+                            <td>EXE 실행 시 바이러스 경고</td>
+                            <td>정상 (Windows Defender 오탐지), 계속 실행</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 20: Cheat Sheet -->
+            <section>
+                <h1>유용한 명령어 모음</h1>
+                <h2>Conda 명령어 치트시트</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>명령어</th>
+                            <th>설명</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>conda create -n 이름 python=3.11</code></td>
+                            <td>가상환경 생성</td>
+                        </tr>
+                        <tr>
+                            <td><code>conda activate 이름</code></td>
+                            <td>가상환경 활성화</td>
+                        </tr>
+                        <tr>
+                            <td><code>conda deactivate</code></td>
+                            <td>가상환경 비활성화</td>
+                        </tr>
+                        <tr>
+                            <td><code>conda env list</code></td>
+                            <td>모든 가상환경 목록</td>
+                        </tr>
+                        <tr>
+                            <td><code>conda install 패키지명</code></td>
+                            <td>패키지 설치 (예: pandas, numpy)</td>
+                        </tr>
+                        <tr>
+                            <td><code>conda remove -n 이름 --all</code></td>
+                            <td>가상환경 삭제</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <blockquote>
+                    <strong>패키지</strong><br>
+                    - 특정 기능을 수행하는 Python 코드 모음 (라이브러리)<br>
+                    - 예: pandas (데이터 분석), numpy (수치 계산), requests (웹 요청)
+                </blockquote>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- reveal.js Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            plugins: [RevealHighlight],
+            transition: 'slide',
+            transitionSpeed: 'fast',
+            center: true
+        });
+    </script>
+</body>
+
+</html>
