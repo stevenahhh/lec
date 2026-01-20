@@ -42,17 +42,34 @@
         <p>프로그래밍을 시작하기 위해 전 세계에서 가장 널리 쓰이는 도구인 <b>Visual Studio Code</b>를 설치합니다.</p>
 
         <div class="step-title">과정 01. 공식 배포처 접속 및 다운로드</div>
-        <ul>
-          <li>웹사이트 접속: <a href="https://code.visualstudio.com/">code.visualstudio.com</a></li>
-          <li>중앙의 <b>'Download for Windows'</b> 버튼을 클릭하여 설치 파일(.exe)을 내려받습니다.</li>
-        </ul>
+        <ol>
+          <li>웹 브라우저(크롬, 엣지 등)를 엽니다.</li>
+          <li>주소창에 <a href="https://code.visualstudio.com/">code.visualstudio.com</a>을 입력하고 접속합니다.</li>
+          <li>페이지 중앙에 있는 파란색 <b>'Download for Windows'</b> 버튼을 클릭합니다.</li>
+          <li>다운로드가 시작되며, 브라우저 하단이나 다운로드 폴더에 <code>VSCodeUserSetup-x64-x.xx.x.exe</code> 파일이 저장됩니다.</li>
+          <li>다운로드가 완료되면 (보통 1-2분 소요) 파일을 클릭하여 실행합니다.</li>
+        </ol>
+      </section>
 
-        <div class="step-title">과정 02. 설치 시 필수 체크 사항 (중요)</div>
-        <p>설치 프로그램을 실행한 후, '추가 작업 선택' 화면에서 다음 항목을 <span class="warning">반드시 선택</span>하십시오.</p>
+      <section>
+        <div class="step-title">과정 02. 설치 마법사 진행</div>
+        <ol>
+          <li><b>사용권 계약:</b> '동의합니다'를 선택하고 [다음] 클릭</li>
+          <li><b>설치 위치 선택:</b> 기본 경로 그대로 두고 [다음] 클릭</li>
+          <li><b>시작 메뉴 폴더:</b> 기본값 그대로 [다음] 클릭</li>
+        </ol>
+
+        <div class="step-title">과정 03. 추가 작업 선택 (중요!)</div>
+        <p><span class="warning">이 단계가 가장 중요합니다!</span> 다음 항목들을 <span class="warning">모두 체크</span>해주세요:</p>
         <ul>
-          <li>[V] <b>PATH에 추가</b> (이 옵션은 터미널에서 에디터를 호출하기 위해 필수적입니다)</li>
-          <li>[V] <b>Code로 열기</b> 메뉴 추가 (폴더나 파일을 우클릭하여 즉시 편집할 수 있게 합니다)</li>
+          <li>☑ <b>바탕 화면에 아이콘 만들기</b> (선택사항, 편의를 위해 권장)</li>
+          <li>☑ <b>PATH에 추가(다시 시작한 후 사용 가능)</b> <span class="warning">← 필수!</span></li>
+          <li>☑ <b>탐색기 파일의 상황에 맞는 메뉴에 "Code(으)로 열기" 작업 추가</b> <span class="warning">← 필수!</span></li>
+          <li>☑ <b>탐색기 디렉터리의 상황에 맞는 메뉉 "Code(으)로 열기" 작업 추가</b> <span class="warning">← 필수!</span></li>
+          <li>☑ <b>지원되는 파일 형식의 편집기로 Code 등록</b> (선택사항)</li>
         </ul>
+        <p style="margin-top: 15px;">모두 체크했다면 [다음] → [설치] 버튼을 차례로 클릭합니다.</p>
+        <p style="font-size: 0.9em; color: #718096;">※ 설치는 보통 1-2분 정도 소요됩니다.</p>
       </section>
 
       <!-- 3. VS Code 한글화 및 기본 설정 -->
@@ -60,32 +77,59 @@
         <h1>2. 사용자 친화적인 환경 설정</h1>
         <p>에디터를 처음 실행하면 영어로 되어 있어 생소할 수 있습니다. 한글화와 편리한 기능을 설정합니다.</p>
 
-        <div class="step-title">과정 03. 한글 언어 팩 적용</div>
+        <div class="step-title">과정 04. VS Code 첫 실행 및 한글 언어 팩 설치</div>
         <ol>
-          <li>왼쪽 사이드바의 <b>Extensions 아이콘</b>(네모난 블록 모양)을 클릭합니다.</li>
+          <li>바탕화면의 VS Code 아이콘을 더블클릭하거나 시작 메뉴에서 'Visual Studio Code'를 검색하여 실행합니다.</li>
+          <li>처음 실행하면 영어로 된 화면이 나타납니다. <span class="warning">당황하지 마세요!</span></li>
+          <li>화면 왼쪽 세로 메뉴바(사이드바)를 보면 5-6개의 아이콘이 있습니다.</li>
+          <li>그 중 <b>네모 블록 4개가 모여있는 모양의 아이콘</b>(Extensions)을 클릭합니다.</li>
           <img src="extension.png" alt="VS Code 확장 프로그램 아이콘" class="guide-image">
-          <li>검색창에 <code class="highlighter">Korean</code>을 입력합니다.</li>
-          <li><b>'Korean Language Pack'</b> 항목의 [Install] 버튼을 클릭합니다.</li>
-          <li>우측 하단 알림창에서 [Change Language and Restart]를 선택하여 재시작합니다.</li>
         </ol>
+      </section>
+
+      <section>
+        <div class="step-title">과정 05. Korean Language Pack 검색 및 설치</div>
+        <ol>
+          <li>상단에 <code class="highlighter">Search Extensions in Marketplace</code>라는 검색창이 나타납니다.</li>
+          <li>검색창을 클릭하고 <code class="highlighter">Korean</code>이라고 입력합니다.</li>
+          <li>검색 결과 맨 위에 <b>'Korean Language Pack for Visual Studio Code'</b>가 나타납니다.</li>
+          <li>제작자가 <b>Microsoft</b>인지 확인하고, 파란색 <b>[Install]</b> 버튼을 클릭합니다.</li>
+          <li>설치가 완료되면 (보통 5-10초) 우측 하단에 팝업 알림이 나타납니다.</li>
+          <li>팝업에서 <b>[Change Language and Restart]</b> (또는 <b>[Restart]</b>) 버튼을 클릭합니다.</li>
+          <li>VS Code가 재시작되면서 모든 메뉴가 한글로 변경됩니다! ✨</li>
+        </ol>
+        <p style="font-size: 0.9em; color: #718096; margin-top: 10px;">※ 만약 팝업이 안 보인다면: 상단 메뉴 View → Command Palette
+          (Ctrl+Shift+P) → "Configure Display Language" 입력 → "한국어" 선택</p>
       </section>
 
       <!-- 4. 확장 프로그램 -->
       <section>
-        <h1>3. 필수 확장 프로그램(Extensions)</h1>
-        <p>VS Code는 다양한 플러그인을 통해 기능을 확장합니다. 파이썬 개발에 반드시 필요한 3가지를 설치합니다.</p>
+        <h1>3. 필수 확장 프로그램(Extensions) 설치</h1>
+        <p>VS Code는 다양한 플러그인을 통해 기능을 확장합니다. 파이썬 개발에 반드시 필요한 확장을 설치합니다.</p>
 
-        <div class="step-title">권장 설치 목록</div>
-        <ul>
-          <li><b>Python (Microsoft):</b> 파이썬 언어를 이해하고 오류를 잡아주는 핵심 도구입니다.</li>
-          <li><b>GitHub Copilot:</b> 인공지능이 코드를 함께 작성해 주는 최신 기술입니다. (GitHub 계정 연동 필요)</li>
-          <li><b>Jupyter:</b> 데이터 분석 결과를 시각적으로 확인하기 위한 필수 도구입니다.</li>
-        </ul>
-        <p style="margin-top: 10px; font-size: 0.9em; color: #718096;">※ 설치 방법: 사이드바의 Extensions 메뉴에서 이름을 검색한 뒤 [설치]를
-          클릭하십시오.</p>
+        <div class="step-title">과정 06. Python 확장 프로그램 설치 (필수!)</div>
+        <ol>
+          <li>왼쪽 사이드바의 <b>확장(Extensions)</b> 아이콘을 다시 클릭합니다.</li>
+          <li>검색창에 <code class="highlighter">Python</code>을 입력합니다.</li>
+          <li>맨 위에 나오는 <b>'Python'</b> (제작: Microsoft, 노란 뱀 아이콘)을 찾습니다.</li>
+          <li>파란색 <b>[설치]</b> (또는 [Install]) 버튼을 클릭합니다.</li>
+          <li>설치가 완료될 때까지 기다립니다. (보통 10-20초 소요)</li>
+          <li>버튼이 <b>[제거]</b>로 바뀌면 설치 완료! ✓</li>
+        </ol>
+      </section>
+
+      <section>
+        <div class="step-title">과정 08. GitHub Copilot 설치 (선택사항)</div>
+        <p>AI가 코드를 자동 완성해주는 강력한 도구입니다. <span class="warning">유료이지만 학생은 무료!</span></p>
+        <ol>
+          <li>검색창에 <code class="highlighter">GitHub Copilot</code>을 입력합니다.</li>
+          <li><b>'GitHub Copilot'</b> (제작: GitHub)를 찾아 <b>[설치]</b> 클릭합니다.</li>
+          <li>설치 후 GitHub 계정 로그인이 필요합니다. (학생 인증 필요)</li>
+        </ol>
+        <p style="font-size: 0.9em; color: #718096; margin-top: 10px;">※ Copilot은 선택사항입니다. 나중에 설치해도 됩니다.</p>
+
         <div class="image-container">
-          <!-- 사용자 이미지 삽입 공간 -->
-          <img src="extension2.png" alt="VS Code Run Button" class="guide-image">
+          <img src="extension2.png" alt="VS Code Extensions" class="guide-image">
         </div>
       </section>
 
@@ -94,18 +138,115 @@
         <h1>4-1. 패키지 관리자: Miniconda (Windows)</h1>
         <p>프로젝트별로 독립된 실험실(가상환경)을 만들기 위해 <b>Miniconda</b>를 사용합니다.</p>
 
-        <div class="step-title">Windows용 설치 지침</div>
-        <ul>
-          <li><b>직접 링크:</b> <a
-              href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">Miniconda3 최신 버전 다운로드</a>
-          </li>
-          <li><b>설치 주의사항:</b>
+        <div class="step-title">과정 09. Miniconda 다운로드</div>
+        <ol>
+          <li>다음 링크를 클릭: <a href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">Miniconda3
+              최신 버전 다운로드</a></li>
+          <li>다운로드가 시작됩니다. (파일 크기: 약 100MB, 1-2분 소요)</li>
+          <li>다운로드 폴더에 <code>Miniconda3-latest-Windows-x86_64.exe</code> 파일이 저장됩니다.</li>
+          <li>다운로드 완료 후 파일을 더블클릭하여 실행합니다.</li>
+        </ol>
+      </section>
+
+      <section>
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <div class="step-title">과정 10. Miniconda 설치 마법사 (중요!)</div>
+            <ol>
+              <li><b>Welcome 화면:</b> [Next] 클릭</li>
+              <li><b>License Agreement:</b> [I Agree] 클릭</li>
+              <li><b>Select Installation Type:</b> <b>"Just Me"</b> 선택 후 [Next]</li>
+              <li><b>Choose Install Location:</b> 기본 경로 그대로 두고 [Next]</li>
+            </ol>
+
+            <div class="step-title" style="background: #e53e3e;">⚠️ 가장 중요한 단계! Advanced Installation Options</div>
+            <p style="margin-top: 10px;"><span class="warning">이 화면에서 반드시 다음과 같이 설정하세요:</span></p>
             <ul>
-              <li>설치 중 <b>"Add Miniconda3 to my PATH"</b> 체크박스가 나타나면 <span class="warning">반드시 체크</span>해 주십시오.</li>
-              <li>체크하면 별도의 프로그램 실행 없이 VS Code 터미널에서 즉시 파이썬을 사용할 수 있습니다.</li>
+              <li>☑ <b>"Add Miniconda3 to my PATH environment variable"</b> <span class="warning">← 반드시 체크!</span></li>
+              <li>☑ <b>"Register Miniconda3 as my default Python"</b> (이것도 체크 권장)</li>
             </ul>
-          </li>
-        </ul>
+            <p style="color: #e53e3e; font-weight: 700; margin-top: 10px;">※ 빨간 경고 문구가 나와도 무시하고 체크하세요! 이게 가장 편합니다.</p>
+
+            <ol start="5" style="margin-top: 15px;">
+              <li>두 항목 모두 체크했다면 [Install] 클릭</li>
+              <li>설치 진행 (2-3분 소요)</li>
+              <li>완료 화면에서 [Next] → [Finish] 클릭</li>
+            </ol>
+          </div>
+
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+            <img src="miniconda.png" alt="Miniconda PATH 설정" class="guide-image"
+              style="max-width: 100%; max-height: 480px;">
+          </div>
+        </div>
+      </section>
+
+      <!-- 5-1-1. PowerShell 설정 (Windows) -->
+      <section>
+        <h1>4-1-1. PowerShell 실행 정책 설정 (Windows 필수)</h1>
+        <p>Conda가 정상적으로 작동하려면 <b>PowerShell의 실행 정책</b>을 변경해야 합니다.</p>
+
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <div class="step-title">과정 11. PowerShell 관리자 권한으로 실행</div>
+            <ol>
+              <li>키보드에서 <b>Windows 키</b>를 누릅니다. (또는 화면 왼쪽 하단 시작 버튼 클릭)</li>
+              <li>검색창에 <code class="highlighter">PowerShell</code>이라고 입력합니다.</li>
+              <li>검색 결과에 <b>'Windows PowerShell'</b>이 나타납니다.</li>
+              <li>이것을 <span class="warning">마우스 우클릭</span>합니다.</li>
+              <li>메뉴에서 <b>'관리자 권한으로 실행'</b>을 클릭합니다.</li>
+              <li>"이 앱이 디바이스를 변경하도록 허용하시겠습니까?" 메시지가 나오면 <b>[예]</b> 클릭</li>
+              <li>파란색 배경의 PowerShell 창이 열립니다. 제목 표시줄에 <b>"관리자:"</b>라고 써있는지 확인하세요!</li>
+            </ol>
+          </div>
+
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+            <img src="search.png" alt="PowerShell 관리자 권한 실행" class="guide-image"
+              style="max-width: 100%; max-height: 480px;">
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="step-title">과정 12. 실행 정책 변경</div>
+        <p>관리자 권한 PowerShell 창에서 다음 명령어를 <span class="warning">정확히</span> 입력합니다.</p>
+        <pre><code class="bash">Set-ExecutionPolicy RemoteSigned</code></pre>
+        <ol>
+          <li>위 명령어를 복사하여 PowerShell 창에 붙여넣기 (우클릭 또는 Ctrl+V)</li>
+          <li>Enter 키를 누릅니다.</li>
+          <li>다음과 같은 확인 메시지가 나타납니다:</li>
+        </ol>
+        <pre style="background: #1a1a2e; color: #eee; padding: 15px; margin: 10px 0;">실행 정책 변경
+실행 정책을 사용하여 신뢰할 수 없는 스크립트를 차단할 수 있습니다.
+실행 정책을 변경하면 about_Execution_Policies 도움말 항목에 설명된 대로
+보안 위험에 노출될 수 있습니다. 실행 정책을 변경하시겠습니까?
+[Y] 예(Y)  [A] 모두 예(A)  [N] 아니요(N)  [L] 모두 아니요(L)  [S] 일시 중단(S)  [?] 도움말</pre>
+        <ol start="4">
+          <li><code class="highlighter">Y</code>를 입력하고 Enter를 누릅니다.</li>
+          <li>아무 메시지 없이 다시 명령 프롬프트(PS C:\...)가 나타나면 성공입니다! ✓</li>
+        </ol>
+      </section>
+
+      <section>
+        <div class="step-title">과정 13. Conda 초기화</div>
+        <p>PowerShell에서 Conda를 사용할 수 있도록 초기화합니다.</p>
+        <pre><code class="bash">conda init powershell</code></pre>
+        <ol>
+          <li>위 명령어를 PowerShell에 입력하고 Enter를 누릅니다.</li>
+          <li>다음과 같은 메시지가 주르륵 나타납니다:</li>
+        </ol>
+        <pre style="background: #1a1a2e; color: #0f0; padding: 15px; margin: 10px 0; font-size: 0.8em;">no change     C:\Users\사용자이름\miniconda3\Scripts\conda.exe
+no change     C:\Users\사용자이름\miniconda3\Scripts\conda-env.exe
+...
+modified      C:\Users\사용자이름\Documents\WindowsPowerShell\profile.ps1
+
+For changes to take effect, close and re-open your current shell.</pre>
+        <ol start="3">
+          <li>마지막에 <b>"For changes to take effect, close and re-open your current shell."</b>이라고 나오면 성공!</li>
+          <li>PowerShell 창을 완전히 닫습니다. (X 버튼 클릭)</li>
+          <li><span class="warning">VS Code도 완전히 종료</span>합니다. (VS Code 창의 X 버튼 클릭)</li>
+          <li>잠시 후 VS Code를 다시 실행합니다.</li>
+        </ol>
+        <p style="font-size: 0.9em; color: #718096; margin-top: 15px;">※ <b>반드시 재시작해야</b> conda 명령어가 작동합니다!</p>
       </section>
 
       <!-- 5-2. Miniconda 설치 (macOS) -->
@@ -128,7 +269,7 @@
         <div class="step-title">보안 경고 발생 시 조치 방법</div>
         <p>macOS 보안 설정으로 인해 설치가 차단될 경우, 다운로드한 파일을 <span class="warning">우클릭</span>한 후 <b>'열기'</b>(또는 '설치 프로그램' 관련 기본
           메뉴)를 선택하여 강제 실행해 주십시오.</p>
-        <div style="text-align: center; width: 100%;">
+        <div style="text-align: center; max-width: 50%;">
           <img src="image.png" alt="macOS 설치 가이드" class="guide-image">
         </div>
         <div class="step-title">설치 완료 확인</div>
@@ -140,25 +281,83 @@
         <h1>5. 가상환경 구축 및 관리</h1>
         <p>여러 프로젝트를 동시에 진행할 때, 라이브러리 간 충돌을 방지하기 위해 독립된 환경을 만듭니다.</p>
 
-        <img src="terminal.png" alt="VS Code 터미널 열기" class="guide-image">
-        <p>터미널은 왼쪽 위 이곳 또는 Ctrl + ` 키를 눌러 열 수 있습니다.</p> <br>
-        <pre><code class="bash"># 1. 'my_env'라는 이름의 새로운 가상환경을 생성합니다.
-conda create -n my_env python=3.10
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <div class="step-title">과정 14. VS Code에서 터미널 열기</div>
+            <ol>
+              <li>VS Code를 실행합니다.</li>
+              <li>상단 메뉴에서 <b>터미널(Terminal)</b> → <b>새 터미널(New Terminal)</b> 클릭</li>
+              <li>또는 단축키 <code>Ctrl + `</code> (백틱, 1번 키 왼쪽)을 누릅니다.</li>
+              <li>화면 하단에 터미널 창이 나타납니다.</li>
+              <li>터미널에 <b>(base)</b>라는 글자가 보이면 conda가 정상 작동하는 것입니다! ✓</li>
+            </ol>
+          </div>
 
-# 2. 생성한 환경을 활성화(입장)합니다. (프롬프트 앞 괄호 확인)
-conda activate my_env
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 15px; justify-content: center;">
+            <div style="text-align: center;">
+              <p style="font-weight: 600; margin-bottom: 5px;">터미널 열기</p>
+              <img src="terminal.png" alt="VS Code 터미널 열기" class="guide-image" style="max-width: 100%;">
+            </div>
+            <div style="text-align: center;">
+              <p style="font-weight: 600; margin-bottom: 5px;">(base) 확인</p>
+              <img src="base.png" alt="Conda base 환경 확인" class="guide-image" style="max-width: 100%;">
+            </div>
+          </div>
+        </div>
+      </section>
 
-</code></pre>
+      <section>
+        <div class="step-title">과정 15. 가상환경 생성</div>
+        <p>이제 우리만의 독립된 파이썬 환경을 만들어봅시다.</p>
+        <pre><code class="bash">conda create -n my_env python=3.11 -y</code></pre>
+        <ol>
+          <li>위 명령어를 터미널에 복사-붙여넣기 하고 Enter를 누릅니다.</li>
+          <li><code>-n my_env</code>: 환경 이름을 'my_env'로 지정</li>
+          <li><code>python=3.11</code>: Python 3.11 버전 설치 (최신 안정 버전)</li>
+          <li><code>-y</code>: 모든 확인 질문에 자동으로 'yes' 응답</li>
+          <li>환경 생성이 시작되며 패키지를 다운로드합니다. (1-2분 소요)</li>
+          <li>마지막에 다음 메시지가 나오면 성공:</li>
+        </ol>
+        <pre style="background: #1a1a2e; color: #0f0; padding: 10px; font-size: 0.85em;">#
+# To activate this environment, use
+#
+#     $ conda activate my_env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate</pre>
+      </section>
 
-        <details>
-          <summary class="step-title" style="margin: 0;">➕ (클릭하여 펼치기) / (필수 아님)</summary>
-          <p style="font-size: 0.9em; color: #718096; margin-top: 10px;">데이터 분석과 시각화에 필요한 주요 라이브러리들을 설치합니다.</p>
-          <pre><code class="bash">
-# 3. 데이터 분석에 필수적인 패키지들을 설치합니다.
+      <section>
+        <div class="step-title">과정 16. 가상환경 활성화</div>
+        <p>생성한 환경에 "입장"해야 사용할 수 있습니다.</p>
+        <pre><code class="bash">conda activate my_env</code></pre>
+        <ol>
+          <li>위 명령어를 입력하고 Enter를 누릅니다.</li>
+          <li>터미널의 맨 앞 부분이 <code>(base)</code>에서 <code>(my_env)</code>로 바뀝니다!</li>
+        </ol>
+        <pre style="background: #1a1a2e; color: #eee; padding: 10px;">(base) PS C:\Users\사용자이름> conda activate my_env
+<span style="color: #0f0;">(my_env)</span> PS C:\Users\사용자이름></pre>
+        <p style="margin-top: 15px;"><span class="warning">이제 my_env 환경이 활성화되었습니다!</span> 앞으로 설치하는 모든 패키지는 이 환경에만 설치됩니다.
+        </p>
+
+        <div class="step-title" style="margin-top: 30px;">확인하기</div>
+        <p>Python이 제대로 설치되었는지 확인해봅시다:</p>
+        <pre><code class="bash">python --version</code></pre>
+        <p>결과: <code>Python 3.11.x</code>와 같은 메시지가 나오면 성공! ✓</p>
+
+        <details style="margin-top: 20px;">
+          <summary class="step-title" style="margin: 0;">➕ 추가 패키지 설치 (선택사항 - 클릭하여 펼치기)</summary>
+          <p style="font-size: 0.9em; color: #718096; margin-top: 10px;">데이터 분석과 시각화에 필요한 주요 라이브러리들을 미리 설치할 수 있습니다.</p>
+          <pre><code class="bash"># 데이터 분석 패키지 일괄 설치 (1-2분 소요)
 pip install pandas numpy matplotlib seaborn scikit-learn
 
-# 4. 현재 생성되어 있는 가상환경들의 목록을 확인합니다.
+# 설치된 패키지 목록 확인
+pip list
+
+# 가상환경 목록 확인
 conda env list</code></pre>
+          <p style="font-size: 0.85em; color: #718096;">※ 이 단계는 지금 하지 않아도 나중에 필요할 때 설치할 수 있습니다.</p>
         </details>
       </section>
 
@@ -167,21 +366,49 @@ conda env list</code></pre>
         <h1>6. VS Code 인터프리터 연결</h1>
         <p>에디터가 내가 만든 가상환경을 사용하도록 직접 지정해 주어야 합니다.</p>
 
-        <div class="step-title">연결 단계 설명</div>
+        <div class="step-title">과정 17. Python 인터프리터 선택</div>
         <ol>
-          <li>VS Code 내에서 <code>Ctrl + Shift + P</code>를 눌러 명령 창을 엽니다.</li>
-          <li><code class="highlighter">Select Interpreter</code>를 입력하고 실행합니다.</li>
-          <li>목록에서 <b>만든 환경의 이름으로</b> 표시된 항목을 선택합니다.</li>
+          <li>VS Code에서 <b>새 파일</b>을 만듭니다. (Ctrl+N)</li>
+          <li>파일을 Python 파일로 저장합니다. (Ctrl+S → 파일명: <code>test.py</code>)</li>
+          <li>키보드로 <code>Ctrl + Shift + P</code>를 동시에 누릅니다.</li>
+          <li>화면 상단 중앙에 검색창이 나타납니다.</li>
+          <li>검색창에 <code class="highlighter">Python: Select Interpreter</code>를 입력합니다.</li>
+          <li>자동완성 목록이 나타나면 <b>'Python: Select Interpreter'</b>를 클릭하거나 Enter를 누릅니다.</li>
         </ol>
-        <img src="select interpreter.png" alt="VS Code 인터프리터 선택 화면" class="guide-image">
-        <br>
-        <img src="si2.png" alt="인터프리터 선택 완료 화면" class="guide-image">
+        <div style="align-items: start; display: flex; flex-direction: row; gap: 20px; max-width: 50%;">
+          <img src="select interpreter.png" alt="VS Code 인터프리터 선택 화면" class="guide-image">
+          <img src="si2.png" alt="인터프리터 선택 완료 화면" class="guide-image">
+        </div>
+      </section>
 
+      <section>
+        <div class="step-title">과정 18. my_env 환경 선택</div>
+        <ol>
+          <li>Python 인터프리터 목록이 나타납니다.</li>
+          <li>목록에서 <b>'my_env'</b>가 포함된 항목을 찾습니다:</li>
+        </ol>
+        <pre style="background: #f7f7f7; padding: 10px; color: #333; border-left: 4px solid #667eea;">Python 3.11.x ('my_env')
+~\miniconda3\envs\my_env\python.exe</pre>
+        <ol start="3">
+          <li>위와 같이 <b>'my_env'</b>가 적힌 항목을 클릭하여 선택합니다.</li>
+          <li>만약 목록에 my_env가 안 보인다면:
+            <ul style="margin-top: 8px;">
+              <li>터미널에서 <code>conda activate my_env</code>를 먼저 실행</li>
+              <li>VS Code를 완전히 재시작</li>
+              <li>다시 인터프리터 선택 시도</li>
+            </ul>
+          </li>
+        </ol>
       </section>
       <section>
-        <div class="step-title">성공 여부 확인</div>
-        <p>에디터 우측 하단 상태 표시줄에 <b>'my_env'</b>라는 이름이 표시되는지 확인하십시오. 이제 모든 코드는 이 안전한 환경 내에서 실행됩니다. 사진의 환경은 base입니다.</p>
+        <div class="step-title" style="margin-top: 25px;">성공 여부 확인</div>
+        <p>선택이 완료되면 VS Code 화면 <b>우측 하단 상태 표시줄</b>을 확인하세요.</p>
+        <ul>
+          <li>파란색 바에 <b>'3.11.x ('my_env')'</b> 또는 <b>'my_env'</b>라고 표시되어야 합니다.</li>
+          <li>이제 .py 파일을 실행하면 자동으로 my_env 환경의 Python을 사용합니다! ✓</li>
+        </ul>
         <img src="python.png" alt="VS Code 상태 표시줄 인터프리터 확인" class="guide-image">
+        <p style="font-size: 0.85em; color: #718096; margin-top: 10px;">※ 사진은 예시이며, 여러분은 'my_env'로 표시되어야 합니다.</p>
       </section>
 
       <!-- 8. 마무리 -->
@@ -209,7 +436,8 @@ conda env list</code></pre>
       hash: true,
       plugins: [RevealHighlight],
       center: false,
-      transition: 'slide'
+      transition: 'fade',
+      transitionSpeed: 'fast'
     });
 
     // Copy Button Script
