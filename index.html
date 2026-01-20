@@ -7,66 +7,19 @@
     <title>발표 자료 목록</title>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    <style>
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #f7fafc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-        }
-
-        h1 {
-            color: #2d3748;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .link-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .link-item {
-            display: block;
-            padding: 1rem;
-            background-color: #ebf8ff;
-            color: #2b6cb0;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            border: 1px solid #bee3f8;
-        }
-
-        .link-item:hover {
-            background-color: #bee3f8;
-            transform: translateY(-2px);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="portal-body">
     <div class="container">
         <h1>발표 자료 목록</h1>
         <div class="link-list">
             <a href="presentation1/" class="link-item">1. Python 개요 및 원샷 프롬프트</a>
             <a href="presentation2/" class="link-item">2. 데이터 시각화</a>
             <a href="presentation3/" class="link-item">3. 세 번째 발표 자료 (준비 중)</a>
+            <a href="appendix/" class="link-item"
+                style="background-color: #f0fff4; color: #2f855a; border-color: #c6f6d5;">부록. 개발 환경 설정 (VS Code, Python,
+                Copilot)</a>
         </div>
     </div>
 </body>

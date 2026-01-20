@@ -18,106 +18,11 @@
   <!-- Syntax Highlighting -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css">
 
-  <style>
-    :root {
-      --r-main-font: 'Pretendard', sans-serif;
-      --r-heading-font: 'Pretendard', sans-serif;
-      --r-code-font: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-      --r-main-color: #333333;
-      --r-heading-color: #e67e22;
-      /* 주제 색상 변경 (주황색 계열) */
-      --r-background-color: #ffffff;
-      --r-link-color: #e67e22;
-    }
-
-    .reveal {
-      font-family: var(--r-main-font);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--r-main-color);
-    }
-
-    /* Layout */
-    .reveal .slides section {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      text-align: left;
-      padding: 40px 50px;
-      box-sizing: border-box;
-      height: 100%;
-    }
-
-    .reveal .slides section.center {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .reveal h1 {
-      font-family: var(--r-heading-font);
-      font-weight: 700;
-      color: var(--r-heading-color);
-      font-size: 1.8em;
-      margin: 0 0 0.8em 0;
-      width: 100%;
-      padding-bottom: 0.4em;
-      border-bottom: 2px solid rgba(230, 126, 34, 0.1);
-      line-height: 1.2;
-    }
-
-    .reveal .slides section.center h1 {
-      border-bottom: none;
-      padding-bottom: 0;
-      font-size: 2.8em;
-      margin-bottom: 0.2em;
-    }
-
-    .reveal h2 {
-      font-size: 1.2em;
-      color: #4a5568;
-      margin-bottom: 0.8em;
-    }
-
-    .reveal blockquote {
-      width: 100%;
-      padding: 20px;
-      background: #fff8f1;
-      border-left: 5px solid #e67e22;
-      font-style: normal;
-      box-shadow: none;
-      text-align: left;
-    }
-
-    code {
-      font-family: var(--r-code-font);
-      background-color: #f7fafc;
-      padding: 2px 5px;
-      border-radius: 4px;
-      color: #d53f8c;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9em;
-    }
-
-    th {
-      background-color: #e67e22;
-      color: white;
-      padding: 10px;
-    }
-
-    td {
-      border-bottom: 1px solid #edf2f7;
-      padding: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
+  <a href="../index.html" class="home-button" target="_self">🏠 홈으로</a>
   <div class="reveal">
     <div class="slides">
 
@@ -165,56 +70,91 @@
 
       <!-- Slide 4: Step 1 Setup -->
       <section>
-        <h1>Step 1: 환경 구성</h1>
-        <p>터미널에 아래 명령어를 입력하여 필요한 패키지를 설치하십시오.</p>
-        <pre><code class="language-bash">pip install pandas matplotlib seaborn openpyxl</code></pre>
+        <h1>Step 1: AI 기반 자동 환경 구축</h1>
+        <p>복잡한 수동 설정 대신 AI(Copilot)에게 전체 개발 환경 구성을 요청할 수 있습니다.</p>
+        <ul>
+          <li><strong>가상환경(venv)</strong> 생성 및 활성화</li>
+          <li>필수 라이브러리(Pandas, Seaborn 등) 일괄 설치</li>
+          <li>데이터 시각화를 위한 한글 폰트 및 라이브러리 설정</li>
+        </ul>
       </section>
 
       <!-- Slide 5: Step 2 Sample Data -->
       <section>
-        <h1>Step 2: 데이터 매체 준비</h1>
-        <p><code>data.csv</code> 파일을 생성하고 아래 데이터를 입력하십시오.</p>
-        <pre><code>날짜,상품,판매량,매출액
-2026-01-01,노트북,5,5000000
-2026-01-02,마우스,20,400000
-2026-01-03,키보드,15,1200000</code></pre>
+        <h1>Step 2: 데이터 준비</h1>
+        <p>실습에 사용할 원본 데이터를 확인하고 다운로드하십시오.</p>
+        <div
+          style="background: #fdf2f2; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c; margin-bottom: 20px;">
+          <p style="margin: 0;"><strong>데이터 파일:</strong> <code>F71-72-74-76-78-27-resampled-30m - 복사본.csv</code></p>
+          <p style="margin: 10px 0 0 0;">(G열의 <strong>'발전량'</strong> 데이터를 시각화의 핵심 지표로 사용합니다.)</p>
+        </div>
+        <a href="F71-72-74-76-78-27-resampled-30m - 복사본.csv" download
+          style="display: inline-block; background: #e67e22; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+          📥 실습 데이터 다운로드
+        </a>
       </section>
 
       <!-- Slide 6: Step 3 Basic Analysis -->
       <section>
-        <h1>Step 3: 데이터 로드 및 분석</h1>
+        <h1>Step 3: 데이터 로드 및 확인</h1>
         <pre><code class="language-python">import pandas as pd
 
-# 데이터프레임 생성
-df = pd.read_csv('data.csv')
+# CSV 파일 로드 (한글 깨짐 방지를 위해 cp949 인코딩 사용)
+file_path = 'F71-72-74-76-78-27-resampled-30m - 복사본.csv'
+df = pd.read_csv(file_path, encoding='cp949')
 
-# 기초 통계 정보 출력
-print(df.info())
-print(df.describe())</code></pre>
+# 데이터 구조 확인 (G열 '발전량' 확인)
+print(df.head())
+print(df.info())</code></pre>
+      </section>
+
+      <!-- Slide 7: Python Execution Guide -->
+      <section>
+        <h1>Python 스크립트 실행 방법</h1>
+        <p>VS Code 우측 상단의 <strong>'삼각형 아이콘'</strong>(Run Python File)을 클릭하여 코드를 실행할 수 있습니다.</p>
+        <div class="image-container">
+          <!-- 사용자 이미지 삽입 공간 -->
+          <img src="run_button.png" alt="VS Code Run Button" class="guide-image">
+        </div>
+        <ul>
+          <li>단축키: <code>Ctrl + F5</code> (디버깅 없이 실행)</li>
+          <li>결과는 하단 터미널(Terminal) 창에 출력됩니다.</li>
+        </ul>
       </section>
 
       <!-- Slide 7: Step 4 Plotting -->
       <section>
-        <h1>Step 4: 실시간 수치 시각화</h1>
+        <h1>Step 4: 발전량 시변화 시각화</h1>
         <pre><code class="language-python">import matplotlib.pyplot as plt
 import seaborn as sns
 
-# 시스템 폰트 설정 (Windows)
+# 한글 폰트 설정
 plt.rcParams['font.family'] = 'Malgun Gothic'
 
-# 상품별 판매량 분석 차트 생성
-plt.figure(figsize=(10, 6))
-sns.barplot(x='상품', y='판매량', data=df)
-plt.title('Product Sales Performance')
+# 시계열 데이터 시각화
+plt.figure(figsize=(12, 6))
+# REG_DATE를 x축으로, G열(발전량)을 y축으로 설정
+sns.lineplot(x='REG_DATE', y=df.columns[6], data=df.head(100))
+plt.title('시간대별 발전량 추이 (상위 100건)')
+plt.xticks(rotation=45)
 plt.show()</code></pre>
       </section>
 
       <!-- Slide 8: Step 5 Interactive -->
       <section>
-        <h1>Step 5: AI 코드 생성 실습</h1>
-        <p>Copilot Chat에 다음 질의어를 입력하여 코드를 생성하십시오.</p>
-        <blockquote>
-          "df 객체를 사용하여 일별 매출 합계를 산출하고, 시계열 선 그래프를 출력하는 코드를 작성하십시오."
+        <h1>Step 5: 초정밀 AI 프롬프트 실습</h1>
+        <p>현업 수준의 실전 분석을 위해 Copilot에게 다음과 같이 <strong>명확하고 상세하게</strong> 요청하십시오.</p>
+        <blockquote style="font-size: 0.75em; line-height: 1.4;">
+          "나는 지금 <strong>Windows 환경</strong>에서 <code>F71-72-74-76-78-27-resampled-30m - 복사본.csv</code> 파일을 분석하려고 해. 다음
+          단계를 수행하는 완벽한 파이썬 코드를 작성해줘:<br><br>
+          1. <strong>환경 구축</strong>: 'analy-env'라는 가상환경을 만들고 활성화한 뒤, pandas, matplotlib, seaborn을 설치하는 터미널 명령어를 먼저
+          알려줘.<br>
+          2. <strong>데이터 로드</strong>: 위 CSV 파일을 pandas로 읽어와. 한글 인코딩(cp949)을 고려해서 불러오고, 데이터 구조를 확인해줘.<br>
+          3. <strong>데이터 전처리</strong>: 첫 번째 컬럼인 'REG_DATE'를 시계열(datetime) 형식으로 변환해줘.<br>
+          4. <strong>시각화</strong>: <strong>G열에 있는 '발전량' 데이터</strong>를 타겟으로 해서, 시간에 따른 발전량 변화를 선 그래프(lineplot)로 그려줘. <br>
+          - 폰트는 'Malgun Gothic'으로 설정해서 한글이 안 깨지게 해줘.<br>
+          - 그래프 제목은 '시간별 태양광 발전량 변화 추이'로 하고, x축 레이블이 겹치지 않게 회전시켜줘.<br>
+          - 결과 그래프를 'solar_output_chart.png'로 저장하는 코드도 포함해줘."
         </blockquote>
       </section>
 

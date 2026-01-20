@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부록: 개발 환경 설정 A to Z</title>
+  <base target="_blank">
+
+  <!-- Pretendard Font -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <!-- reveal.js CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/white.css">
+
+  <!-- Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css">
+
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    
+  </style>
+</head>
+
+<body>
+  <a href="../index.html" class="home-button" target="_self">🏠 메인 화면으로 가기</a>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- 1. 타이틀 -->
+      <section class="center">
+        <h1>강의 부록:<br>비전공자를 위한 환경 설정 가이드</h1>
+        <h2>현업 수준의 파이썬 개발 환경 구축 A to Z</h2>
+        <p style="color: #4a5568; margin-top: 20px;">본 자료는 입문자가 실무 환경을 완벽히 준비할 수 있도록<br>단계별 상세 지침을 제공합니다.</p>
+      </section>
+
+      <!-- 2. VS Code 설치 -->
+      <section>
+        <h1>1. 코드 에디터: VS Code 설치</h1>
+        <p>프로그래밍을 시작하기 위해 전 세계에서 가장 널리 쓰이는 도구인 <b>Visual Studio Code</b>를 설치합니다.</p>
+
+        <div class="step-title">과정 01. 공식 배포처 접속 및 다운로드</div>
+        <ul>
+          <li>웹사이트 접속: <a href="https://code.visualstudio.com/">code.visualstudio.com</a></li>
+          <li>중앙의 <b>'Download for Windows'</b> 버튼을 클릭하여 설치 파일(.exe)을 내려받습니다.</li>
+        </ul>
+
+        <div class="step-title">과정 02. 설치 시 필수 체크 사항 (중요)</div>
+        <p>설치 프로그램을 실행한 후, '추가 작업 선택' 화면에서 다음 항목을 <span class="warning">반드시 선택</span>하십시오.</p>
+        <ul>
+          <li>[V] <b>PATH에 추가</b> (이 옵션은 터미널에서 에디터를 호출하기 위해 필수적입니다)</li>
+          <li>[V] <b>Code로 열기</b> 메뉴 추가 (폴더나 파일을 우클릭하여 즉시 편집할 수 있게 합니다)</li>
+        </ul>
+      </section>
+
+      <!-- 3. VS Code 한글화 및 기본 설정 -->
+      <section>
+        <h1>2. 사용자 친화적인 환경 설정</h1>
+        <p>에디터를 처음 실행하면 영어로 되어 있어 생소할 수 있습니다. 한글화와 편리한 기능을 설정합니다.</p>
+
+        <div class="step-title">과정 03. 한글 언어 팩 적용</div>
+        <ol>
+          <li>왼쪽 사이드바의 <b>Extensions 아이콘</b>(네모난 블록 모양)을 클릭합니다.</li>
+          <img src="extension.png" alt="VS Code 확장 프로그램 아이콘" class="guide-image">
+          <li>검색창에 <code class="highlighter">Korean</code>을 입력합니다.</li>
+          <li><b>'Korean Language Pack'</b> 항목의 [Install] 버튼을 클릭합니다.</li>
+          <li>우측 하단 알림창에서 [Change Language and Restart]를 선택하여 재시작합니다.</li>
+        </ol>
+
+        <div class="step-title">과정 04. 작업 효율을 높이는 기본 옵션</div>
+        <ul>
+          <li><b>자동 저장:</b> <code>파일 > 자동 저장</code> 메뉴를 체크하십시오. 코드를 작성할 때마다 별도로 저장할 필요가 없어 효율적입니다.</li>
+          <li><b>설정 열기:</b> <code>Ctrl + ,</code>를 눌러 필요한 글꼴 크기나 테마를 자유롭게 조정할 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <!-- 4. 확장 프로그램 -->
+      <section>
+        <h1>3. 필수 확장 프로그램(Extensions)</h1>
+        <p>VS Code는 다양한 플러그인을 통해 기능을 확장합니다. 파이썬 개발에 반드시 필요한 3가지를 설치합니다.</p>
+
+        <div class="step-title">권장 설치 목록</div>
+        <ul>
+          <li><b>Python (Microsoft):</b> 파이썬 언어를 이해하고 오류를 잡아주는 핵심 도구입니다.</li>
+          <li><b>GitHub Copilot:</b> 인공지능이 코드를 함께 작성해 주는 최신 기술입니다. (GitHub 계정 연동 필요)</li>
+          <li><b>Jupyter:</b> 데이터 분석 결과를 시각적으로 확인하기 위한 필수 도구입니다.</li>
+        </ul>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #718096;">※ 설치 방법: 사이드바의 Extensions 메뉴에서 이름을 검색한 뒤 [설치]를
+          클릭하십시오.</p>
+      </section>
+
+      <!-- 5-1. Miniconda 설치 (Windows) -->
+      <section>
+        <h1>4-1. 패키지 관리자: Miniconda (Windows)</h1>
+        <p>프로젝트별로 독립된 실험실(가상환경)을 만들기 위해 <b>Miniconda</b>를 사용합니다.</p>
+
+        <div class="step-title">Windows용 설치 지침</div>
+        <ul>
+          <li><b>직접 링크:</b> <a
+              href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">Miniconda3 최신 버전 다운로드</a>
+          </li>
+          <li><b>설치 주의사항:</b>
+            <ul>
+              <li>설치 중 <b>"Add Miniconda3 to my PATH"</b> 체크박스가 나타나면 <span class="warning">반드시 체크</span>해 주십시오.</li>
+              <li>체크하면 별도의 프로그램 실행 없이 VS Code 터미널에서 즉시 파이썬을 사용할 수 있습니다.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 5-2. Miniconda 설치 (macOS) -->
+      <section>
+        <h1>4-2. 패키지 관리자: Miniconda (macOS)</h1>
+        <p>Apple Mac 사용자는 하드웨어 사양에 맞는 버전을 선택하여 설치하셔야 합니다.</p>
+
+        <div class="step-title">시스템 확인 및 다운로드</div>
+        <p>화면 왼쪽 위 [애플 로고] > [이 Mac에 관하여]에서 프로세서 종류를 먼저 확인하십시오.</p>
+        <ul>
+          <li><b>Apple M1/M2/M3 칩 (Apple Silicon):</b> <br><a
+              href="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg">arm64 (.pkg) 버전 다운로드</a>
+          </li>
+          <li><b>Intel 칩:</b> <br><a
+              href="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg">x86_64 (.pkg) 버전 다운로드</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <div class="step-title">보안 경고 발생 시 조치 방법</div>
+        <p>macOS 보안 설정으로 인해 설치가 차단될 경우, 다운로드한 파일을 <span class="warning">우클릭</span>한 후 <b>'열기'</b>(또는 '설치 프로그램' 관련 기본
+          메뉴)를 선택하여 강제 실행해 주십시오.</p>
+        <div style="text-align: center; width: 100%;">
+          <img src="image.png" alt="macOS 설치 가이드" class="guide-image">
+        </div>
+        <div class="step-title">설치 완료 확인</div>
+        <p>터미널 앱을 열고 <code>conda --version</code>을 입력하여 버전 정보가 나오면 성공입니다.</p>
+      </section>
+
+      <!-- 6. 가상환경 생성 -->
+      <section>
+        <h1>5. 가상환경 구축 및 관리</h1>
+        <p>여러 프로젝트를 동시에 진행할 때, 라이브러리 간 충돌을 방지하기 위해 독립된 환경을 만듭니다.</p>
+
+        <img src="terminal.png" alt="VS Code 터미널 열기" class="guide-image">
+        <p>터미널은 왼쪽 위 이곳 또는 Ctrl + ` 키를 눌러 열 수 있습니다.</p> <br>
+        <pre><code class="bash"># 1. 'my_env'라는 이름의 새로운 가상환경을 생성합니다.
+conda create -n my_env python=3.10
+
+# 2. 생성한 환경을 활성화(입장)합니다. (프롬프트 앞 괄호 확인)
+conda activate my_env
+
+</code></pre>
+
+        <details>
+          <summary class="step-title" style="margin: 0;">➕ (클릭하여 펼치기) / (필수 아님)</summary>
+          <p style="font-size: 0.9em; color: #718096; margin-top: 10px;">데이터 분석과 시각화에 필요한 주요 라이브러리들을 설치합니다.</p>
+          <pre><code class="bash">
+# 3. 데이터 분석에 필수적인 패키지들을 설치합니다.
+pip install pandas numpy matplotlib seaborn scikit-learn
+
+# 4. 현재 생성되어 있는 가상환경들의 목록을 확인합니다.
+conda env list</code></pre>
+        </details>
+      </section>
+
+      <!-- 7. 연결 설정 -->
+      <section>
+        <h1>6. VS Code 인터프리터 연결</h1>
+        <p>에디터가 내가 만든 가상환경을 사용하도록 직접 지정해 주어야 합니다.</p>
+
+        <div class="step-title">연결 단계 설명</div>
+        <ol>
+          <li>VS Code 내에서 <code>Ctrl + Shift + P</code>를 눌러 명령 창을 엽니다.</li>
+          <li><code class="highlighter">Select Interpreter</code>를 입력하고 실행합니다.</li>
+          <li>목록에서 <b>만든 환경의 이름으로</b> 표시된 항목을 선택합니다.</li>
+        </ol>
+        <img src="select interpreter.png" alt="VS Code 인터프리터 선택 화면" class="guide-image">
+        <br>
+        <img src="si2.png" alt="인터프리터 선택 완료 화면" class="guide-image">
+
+      </section>
+      <section>
+        <div class="step-title">성공 여부 확인</div>
+        <p>에디터 우측 하단 상태 표시줄에 <b>'my_env'</b>라는 이름이 표시되는지 확인하십시오. 이제 모든 코드는 이 안전한 환경 내에서 실행됩니다. 사진의 환경은 base입니다.</p>
+        <img src="python.png" alt="VS Code 상태 표시줄 인터프리터 확인" class="guide-image">
+      </section>
+
+      <!-- 8. 마무리 -->
+      <section class="center">
+        <h1>환경 구축을 축하드립니다!</h1>
+        <p>이제 효율적이고 전문적인 개발을 위한 모든 준비가 끝났습니다.</p>
+        <p style="margin-top: 30px; font-weight: 700; color: #0066cc;">실제 강의 예제로 돌아가서 코딩을 시작해 보세요.</p>
+        <div style="margin-top: 60px;">
+          <a href="../index.html" style="font-size: 0.9em; color: #718096; text-decoration: underline;"
+            target="_self">메인 자료 목록으로 이동</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [RevealHighlight],
+      center: false,
+      transition: 'slide',
+      width: 1400,
+      height: 900,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+  </script>
+</body>
+
+</html>
